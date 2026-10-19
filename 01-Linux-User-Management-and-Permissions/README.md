@@ -1,51 +1,115 @@
 # Linux User Management and Permissions
 
-**Status:** Completed lab.
+## Project Overview
 
-## Objective
+**Status:** Completed
 
-Simulate a small IT department's access controls by creating users, managing Linux groups, and allowing only authorized employees into a shared directory.
+Configured and tested Linux user accounts, group memberships, and directory permissions in an Ubuntu Server home lab. Simulated a small IT department where authorized employees require access to shared files while unauthorized users must be restricted.
 
-## Environment
+This project demonstrates user administration, access control, permission troubleshooting, and verification of security settings.
 
-Ubuntu Server ARM64 virtual machine running in UTM.
+## Lab Environment
 
-## Actions performed
+- **Operating System:** Ubuntu Server ARM64
+- **Virtualization:** UTM on an Apple Silicon Mac
+- **Administrative Account:** `labadmin`
+- **Test Accounts:** `employee1`, `employee2`
+- **Security Group:** `itdepartment`
+- **Shared Directory:** `/srv/it-files`
 
-1. Created test accounts `employee1` and `employee2` and an `itdepartment` group.
-2. Added `employee1` to `itdepartment` and verified group membership with `id` and `groups`.
-3. Created a restricted directory, assigned the `itdepartment` group with `chgrp`, and set mode `770` with `chmod`.
-4. Investigated why the group member could not enter a directory located inside `/home/labadmin`: the parent home directory prevented traversal.
-5. Moved the shared directory to `/srv/it-files`, preserving its group and permission settings.
-6. Verified that `employee1` could enter the directory and create a test file while `employee2` initially received `Permission denied`.
-7. Temporarily added `employee2` to the group, verified access in a new session, then removed group membership and confirmed access was denied again.
-8. Recorded a local text report at `~/lab-reports/linux-user-permissions.txt` in the Ubuntu VM.
+## Objectives
 
-## Commands used
+1. Create and manage Linux user accounts and groups.
+2. Configure shared directory ownership and permissions.
+3. Restrict access to authorized group members.
+4. Investigate and resolve permission-related errors.
+5. Test granting and revoking user access.
+
+## Implementation
+
+### 1. User and Group Configuration
+
+Created two test user accounts and an IT department group.
+
+Added `employee1` to `itdepartment` and verified group membership using Linux commands.
+
+### 2. Directory Permissions
+
+Created a shared directory, assigned group ownership to `itdepartment`, and configured permissions using `chmod 770`.
+
+These permissions allow the directory owner and group members to read, write, and access the directory while denying access to other users.
+
+### 3. Troubleshooting a Permission-Denied Error
+
+**Problem:** Despite belonging to the authorized group, `employee1` could not access the shared directory.
+
+**Investigation:** Determined that the directory was located inside `/home/labadmin`, where the parent directory's restrictive permissions prevented other users from traversing the path.
+
+**Resolution:** Moved the shared directory to `/srv/it-files` while retaining the required group ownership and permissions.
+
+**Verification:** Confirmed that `employee1` could enter the directory and create a test file.
+
+### 4. Access Control Testing
+
+Tested access using `employee2`, who was initially not a member of `itdepartment`.
+
+- Confirmed that the unauthorized account received a permission-denied error.
+- Added `employee2` to the authorized group.
+- Started a new login session and verified access was granted.
+- Removed `employee2` from the group.
+- Verified that access was denied again in a new session.
+
+## Commands Practiced
 
 ```bash
 sudo adduser employee2
 sudo usermod -aG itdepartment employee1
 id employee1
+
 sudo chgrp itdepartment /srv/it-files
 sudo chmod 770 /srv/it-files
 ls -ld /srv/it-files
+
 sudo -iu employee1
 cd /srv/it-files
 touch employee1-report.txt
 exit
+
 sudo usermod -aG itdepartment employee2
 sudo gpasswd -d employee2 itdepartment
 ```
 
-## Troubleshooting and learning
+These commands represent key activities performed during the lab.
 
-File access depends on permissions on **every parent directory**. Moving the shared folder outside the administrator's private home directory resolved the traversal problem. Group membership changes should be tested in a **new login session**. Permission `770` gives owner and group read/write/execute permissions and no access to others.
+## Troubleshooting Results
+
+| Issue or Test | Result |
+|---|---|
+| Authorized user initially unable to access shared directory | Identified restrictive parent directory permissions |
+| Shared directory moved to `/srv/it-files` | Authorized user successfully accessed the directory |
+| Unauthorized user attempted access | Permission denied |
+| Unauthorized user added to group | Access granted after starting a new session |
+| Group membership revoked | Access denied again after starting a new session |
+
+## Screenshots
+
+Supporting evidence is available in the [screenshots folder](screenshots/).
+
+The screenshots document user and group configuration, directory permissions, troubleshooting, authorized and unauthorized access testing, and group membership changes.
+
+## Skills Demonstrated
+
+- Linux user account administration
+- Group membership management
+- File and directory permissions
+- `chmod`, `chgrp`, `usermod`, and `gpasswd`
+- Least-privilege access controls
+- Troubleshooting permission-denied errors
+- Verifying access changes through user testing
+- Technical documentation
 
 ## Outcome
 
-Demonstrated controlled access, access provisioning, access revocation, and verification using separate test users.
+Successfully configured a shared directory with restricted access, resolved a parent-directory permission issue, and verified that access could be granted and revoked through Linux group membership.
 
-## Evidence
-
-See `screenshots/`. The curated screenshots focus on user/group setup, permission settings, troubleshooting, access granted/denied, and group access changes. The report's **content is reconstructed here from screenshots**; the original `.txt` file remains inside the user's Ubuntu VM unless separately exported.
+The project demonstrates a structured troubleshooting process: **identify the problem, investigate the cause, implement a solution, and verify the result.**
