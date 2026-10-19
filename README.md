@@ -1,27 +1,41 @@
 # IT Home Lab Portfolio
 
-Hands-on learning projects using **Ubuntu Server on an Apple Silicon Mac with UTM**. These projects demonstrate foundational skills relevant to entry-level IT support and junior IT operations roles.
+Hands-on IT home lab projects using **Ubuntu Server on an Apple Silicon Mac with UTM**. This portfolio documents practical experience with Linux system administration, user account management, access controls, system monitoring, and network troubleshooting.
+
+These projects demonstrate foundational technical skills relevant to **IT Help Desk, Service Desk, and Technical Support** roles.
 
 ## Projects
 
-| Project | Status | Skills |
+| Project | Status | Skills Demonstrated |
 |---|---|---|
-| [Ubuntu VM Setup](00-Ubuntu-VM-Setup/README.md) | Completed setup | Virtual machines, Ubuntu Server, CLI |
-| [Linux User Management and Permissions](01-Linux-User-Management-and-Permissions/README.md) | Completed | User accounts, groups, chmod, chgrp, least privilege, troubleshooting |
-| [Linux System Monitoring and Network Troubleshooting](02-Linux-System-Monitoring-and-Network-Troubleshooting/README.md) | In progress | CPU/RAM/disk, connectivity, DNS, systemd, logs, SSH |
+| [Ubuntu VM Setup](00-Ubuntu-VM-Setup/README.md) | Completed | Virtual machines, Ubuntu Server installation, UTM configuration, Linux CLI |
+| [Linux User Management and Permissions](01-Linux-User-Management-and-Permissions/README.md) | Completed | User accounts, groups, chmod, chgrp, access controls, troubleshooting |
+| [Linux System Monitoring and Network Troubleshooting](02-Linux-System-Monitoring-and-Network-Troubleshooting/README.md) | Completed | CPU and memory monitoring, disk usage, connectivity testing, DNS, systemd, logs, SSH diagnostics |
 
-## Evidence
+## Technical Skills
 
-Each project contains screenshots captured during the lab. `SCREENSHOT_INDEX.csv` describes the curated evidence and maps it back to the original archive. This public-facing edition keeps 17 screenshots selected from the larger original archive. The screenshots are evidence of hands-on practice, not production IT experience.
+- **Operating Systems:** Ubuntu Server, Linux CLI
+- **Virtualization:** UTM, ARM64 virtual machines
+- **User Administration:** Linux users, groups, and permissions
+- **Networking:** Ping, DNS resolution, HTTP connectivity testing
+- **System Diagnostics:** Process monitoring, memory and disk usage, system services, journal logs
+- **Troubleshooting:** Identifying permission issues, testing solutions, and verifying results
 
-## Before publishing
+## Troubleshooting Highlights
 
-Review every screenshot for personal names, account details, addresses, network details, or credentials. The VM's private IP addresses are lab-specific, but you can redact them if you prefer. Do not upload passwords, tokens, or confidential information.
+- **Linux File Permissions:** Investigated an access-denied issue caused by restricted parent directory permissions. Relocated the shared directory to `/srv/it-files` and verified authorized access.
+- **User Access Control:** Tested file access for authorized and unauthorized users, modified group membership, and confirmed that removing permissions revoked access.
+- **Network Diagnostics:** Verified network connectivity, DNS resolution, and HTTPS communication using Linux command-line tools.
+- **System Services:** Investigated systemd service status, reviewed logs, and checked for failed services.
+  
+## Project Documentation
 
-## Next steps
+Each project includes a dedicated README explaining its objectives, tools, procedures, troubleshooting steps, and results.
 
-Finish the SSH/networking exercises; add a concise troubleshooting case study and updated screenshots; optionally include a diagram of the lab architecture.
+Selected screenshots provide evidence of hands-on lab activities, including Linux command execution, access-control testing, and system diagnostics.
 
-## Publishing note
+All projects were completed in a personal virtualized lab environment for learning and skill development.
 
-Upload the **contents** of this folder (not the ZIP itself) to GitHub. Review screenshots for usernames, IP addresses, and other information before publishing. The full original ZIP remains your private archive.
+## Ongoing Development
+
+This portfolio will continue to expand with additional hands-on IT support, operating system administration, networking, and troubleshooting projects as new skills are developed.
