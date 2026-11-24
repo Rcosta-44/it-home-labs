@@ -6,7 +6,7 @@ This hands-on lab demonstrates foundational Linux networking, network diagnostic
 
 The objective was to inspect network configurations, verify internet connectivity, validate DNS resolution, and analyze routing information using Linux command-line tools.
 
-## Lab Environment
+## Lab Environment 
 
 - Operating System: Ubuntu Server
 - Environment: Virtual Machine
