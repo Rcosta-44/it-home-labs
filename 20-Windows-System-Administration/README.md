@@ -1,4 +1,4 @@
-# 04-Windows-System-Administration
+# Lab 20 – Windows System Administration
 
 ## Project Overview
 
