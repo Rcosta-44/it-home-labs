@@ -24,7 +24,7 @@ This portfolio documents practical technical experience through independent lab 
 | [01 - Linux User Management and Permissions](01-Linux-User-Management-and-Permissions/README.md) | Completed | User accounts, groups, permissions, access controls |
 | [02 - Linux System Monitoring and Network Troubleshooting](02-Linux-System-Monitoring-and-Network-Troubleshooting/README.md) | Completed | CPU, memory, disk usage, systemd, logs, SSH diagnostics |
 | [03 - Linux Networking and Troubleshooting](03-Linux-Networking-Troubleshooting/README.md) | Completed | IPv4, IPv6, DHCP, DNS, ICMP, routing, gateway diagnostics |
-| [04 - Windows System Administration](04-Windows-System-Administration/README.md) | Completed | Endpoint management, user administration, Windows services, system diagnostics |
+| [20 - Windows System Administration](20-Windows-System-Administration/README.md) | Completed | Endpoint management, user administration, Windows services, system diagnostics |
 
 ## Technical Skills
 
